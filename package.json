@@ -1,0 +1,21 @@
+{
+	"name": "itshopecommerce",
+	"version": "1.0.0",
+	"description": "IT Shop ecommerce using MERN stack",
+	"main": "server.js",
+	"scripts": {
+		"start": "node backend/server.js",
+		"dev": "NODE_ENV=DEVELOPMENT nodemon backend/server.js",
+		"prod": "NODE_ENV=PRODUCTION nodemon backend/server.js"
+	},
+	"author": "Hoang Truong",
+	"license": "ISC",
+	"dependencies": {
+		"dotenv": "^9.0.2",
+		"express": "^4.17.1",
+		"mongoose": "^5.12.8"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.7"
+	}
+}
