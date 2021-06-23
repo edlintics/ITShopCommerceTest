@@ -1,0 +1,8 @@
+Path of DB in mac: System/Volumes/Data/data/db
+
+#Start the Mongodb
+brew services start mongodb-community@4.4
+
+#Stop services
+brew services stop mongodb-community@4.4
+
