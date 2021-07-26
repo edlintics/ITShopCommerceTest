@@ -5,6 +5,8 @@ const APIFeatures = require("../utils/apiFeatures"); // import the features utis
 
 // Create new Product => /api/v1/admin/product/new
 exports.newProduct = catchAsyncErrors(async (req, res, next) => {
+  req.body.user = req.user.id; // the body will append new user property, which is extracted from the current user id that is logging in
+
   const product = await Product.create(req.body);
 
   res.status(201).json({
@@ -24,8 +26,6 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
     .pagination(resPerPage);
 
   const products = await apiFeatures.query; // get all the products in the collection
-
-  await console.log(apiFeatures.query);
 
   res.status(200).json({
     // respond when connect successfully with the api

@@ -12,7 +12,7 @@ exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
   const { token } = req.cookies; // capture the token when teh user seend request
 
   if (!token) {
-    return next(new ErrorHandler("Login first to access thsi resoure. 401"));
+    return next(new ErrorHandler("Login first to access this resoure. 401"));
   }
 
   const decoded = jwt.verify(token, process.env.JWT_SECRET); // check if the json web token secret match the server side secret
@@ -21,3 +21,19 @@ exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
 
   next();
 });
+
+// Check users roles
+
+exports.authorizeRoles = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new ErrorHandler(
+          `Role (${req.user.role}) is not allowed to access this resource`,
+          403
+        )
+      );
+    }
+    next();
+  };
+};

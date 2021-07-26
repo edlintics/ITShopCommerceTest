@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 
 const errorMiddleware = require("./middlewears/errors");
 
+// us ethe corresponding techonology that associated witd (cookier Pasing from client side and json data)
 app.use(express.json());
 app.use(cookieParser());
 
