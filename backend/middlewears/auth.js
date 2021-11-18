@@ -9,10 +9,10 @@ const catchAsyncErrors = require("./catchAsyncErrors");
 exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
   // We will authenticate the user on the back end rather on the front end, for security purpose
 
-  const { token } = req.cookies; // capture the token when teh user seend request
+  const { token } = req.cookies; // capture the token when the user seend request
 
   if (!token) {
-    return next(new ErrorHandler("Login first to access this resoure. 401"));
+    return next(new ErrorHandler("Login first to access this resource. 401"));
   }
 
   const decoded = jwt.verify(token, process.env.JWT_SECRET); // check if the json web token secret match the server side secret

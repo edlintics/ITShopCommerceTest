@@ -66,13 +66,16 @@ const productSchema = new mongoose.Schema({
     default: 0,
   },
   numOfReviews: {
-    numOfReviews: {
-      type: Number,
-      default: 0,
-    },
+    type: Number,
+    default: 0,
   },
   reviews: [
     {
+      user: {
+        type: mongoose.Schema.ObjectId, // obtaint the object id from mongodb
+        ref: "User",
+        req: true,
+      },
       name: {
         type: String,
         required: true,

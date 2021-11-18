@@ -7,6 +7,9 @@ const {
   getSingleProduct,
   updateProduct,
   deleteProduct,
+  createProductReview,
+  getProductReviews,
+  deleteReview,
 } = require("../controllers/productController");
 
 const { isAuthenticatedUser, authorizeRoles } = require("../middlewears/auth"); // use to authenticated users for protected routes
@@ -23,6 +26,10 @@ router
 router
   .route("/admin/product/:id")
   .put(isAuthenticatedUser, authorizeRoles("admin"), updateProduct)
-  .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteProduct); // for the same route, based on teh request, we modify with the selected id product
+  .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteProduct); // for the same route, based on the request, we modify with the selected id product
+
+router.route("/review").put(isAuthenticatedUser, createProductReview);
+router.route("/reviews").get(isAuthenticatedUser, getProductReviews);
+router.route("/reviews").delete(isAuthenticatedUser, deleteReview);
 
 module.exports = router;

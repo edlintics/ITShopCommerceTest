@@ -7,7 +7,7 @@ class ErrorHandler extends Error {
     Error.captureStackTrace(this.constructor);
 
     //this -> Pass in the object itself
-    // this.constructor => Pass in teh constructor function
+    // this.constructor => Pass in the constructor function
   }
 }
 
